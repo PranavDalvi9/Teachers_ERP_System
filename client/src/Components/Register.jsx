@@ -18,22 +18,21 @@ import { Navigate } from 'react-router-dom';
 export default function Register() {
   const navigate = useNavigate();
   const dispatch = useDispatch()
-  const [name , setName] = useState("");
+  const [firstname , setFirstname] = useState("");
+  const [lastname , setLastname] = useState("")
   const [email , setEmail] = useState("")
-  const [mobile , setMobile] = useState("")
-  const [username , setUsername] = useState("")
   const [password , setPassword] = useState("")
 
   const {isAuthenticate} = useSelector((store)=> store.login)
 
   const handleRegister = () => {
     const payload = {
-      name,
+      firstname,
+      lastname,
       email,
-      mobile,
-      username,
       password
     };
+    console.log("paylood",payload)
     dispatch(register(payload))
   }
 
@@ -55,13 +54,11 @@ export default function Register() {
       autoComplete="off"
     >
   
-      <TextField label="Enter Name" variant="filled" color="success" focused onChange={(e) => {setName(e.target.value)}} /><br /><br />
+      <TextField label="Enter First Name" variant="filled" color="success" focused onChange={(e) => {setFirstname(e.target.value)}} /><br /><br />
+
+      <TextField label="Enter Last Name" variant="filled" color="success" focused onChange={(e) => {setLastname(e.target.value)}} /><br /><br />
 
       <TextField label="Enter Email" variant="filled" color="success" focused onChange={(e) => {setEmail(e.target.value)}} /><br /><br />
-
-      <TextField label="Enter Mobile Number" variant="filled" color="success" focused onChange={(e) => {setMobile(e.target.value)}} /><br /><br />
-
-      <TextField label="Enter Username" variant="filled" color="success" focused onChange={(e) => {setUsername(e.target.value)}} /><br /><br />
 
       <TextField label="Enter Password" variant="filled" color="success" focused onChange={(e) => {setPassword(e.target.value)}} /> <br /><br />
 
