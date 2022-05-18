@@ -1,0 +1,72 @@
+.individualTec{
+    /* border: 2px solid red; */
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-template-rows: auto ;
+        /* column-gap: 3%; */
+        row-gap: 14%;
+        /* margin-top: 10%; */
+    /* width: 30%; */
+    margin-left: 7%;
+    margin-right: 3%;
+    margin-top: 6%;
+}
+
+
+.IndiviTeachDat{
+    border: 2px solid red;
+}
+
+.classFlex{
+    display: flex;
+    /* margin-top: 2%; */
+    
+}
+
+.classFlex>p{
+    /* background-color: aqua; */
+    margin-top: 5.5%;
+    padding-left: 3%;
+}
+
+.marginAuto{
+    margin: auto;
+    margin-left: 10%;
+}
+
+
+.marginAutotext{
+    text-align: center;
+}
+
+button{
+    padding: 1%;
+}
+
+
+
+/* MUI */
+
+.inputMUI{
+    margin-left: 7%;
+}
+
+.LoginDiv{
+    margin-top: 5%;
+    margin-left: 35%;
+}
+
+.ButtonDiv{
+    width: 100%;
+    background-color: aqua;
+
+}
+
+.MuiButton-root{
+    background-color: #4700D8 !important;
+}
+
+
+.buttons123{
+    background-color: transparent !important;
+}
