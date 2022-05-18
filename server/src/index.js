@@ -13,15 +13,16 @@ return mongoose.connect("mongodb+srv://pranav:pranav123@cluster0.gvulk.mongodb.n
 const app = express();
 let port = process.env.PORT || 2344;
 
-const  {register,login}=require("./src/controllers/userController")
-const userController = require("./src/controllers/userController");
+const  {register,login}=require("./controllers/userController")
+const userController = require("./controllers/userController");
 
 // cors open
 app.use(cors());
 
-const  teacherController = require("./src/controllers/TeacherController")
+// const  teacherController = require("./src/controllers/TeacherController")
+const  teacherController = require("./controllers/TeacherController")
 
-const classController = require("./src/controllers/ClassController")
+const classController = require("./controllers/ClassController")
 
 
 
@@ -34,9 +35,9 @@ app.use("/class",classController)
 app.post("/register",register)
 app.post("/login" ,login)
 
-app.get("/",(req,res)=>{
-  console.log("geti")
-})
+// app.get("/",(req,res)=>{
+//   console.log("geti")
+// })
 
 
 // const PORT = 2344
