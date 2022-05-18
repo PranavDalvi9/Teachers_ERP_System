@@ -1,48 +1,28 @@
-const { response } = require("express");
 const express = require("express");
 const cors = require("cors");
-// added cors 
 
-
-const mongoose = require("mongoose");
-
-const connect = () => {
-  // return mongoose.connect("mongodb://suraj:suraj_4321@cluster0-shard-00-00.qybgl.mongodb.net:27017,cluster0-shard-00-01.qybgl.mongodb.net:27017,cluster0-shard-00-02.qybgl.mongodb.net:27017/evaluation?ssl=true&replicaSet=atlas-3tamaf-shard-0&authSource=admin&retryWrites=true&w=majority");
-return mongoose.connect("mongodb+srv://pranav:pranav123@cluster0.gvulk.mongodb.net/DataTeacherall?retryWrites=true&w=majority");
-};
+const connect = require("./configs/db");
 const app = express();
+const dotenv = require("dotenv");
+app.use(express.json());
+
 let port = process.env.PORT || 2344;
+// added cors
+const { register, login } = require("./controllers/userController");
 
-const  {register,login}=require("./controllers/userController")
-const userController = require("./controllers/userController");
+const teacherController = require("./controllers/TeacherController");
 
-// cors open
+const classController = require("./controllers/ClassController");
+
 app.use(cors());
 
-// const  teacherController = require("./src/controllers/TeacherController")
-const  teacherController = require("./controllers/TeacherController")
+app.use("/teacher", teacherController);
+app.use("/class", classController);
 
-const classController = require("./controllers/ClassController")
+app.post("/register", register);
+app.post("/login", login);
 
-
-
-// app.use(cors({ origin:"*"}))
-app.use(express.json());
-app.use("/teacher",teacherController)
-app.use("/class",classController)
-
-
-app.post("/register",register)
-app.post("/login" ,login)
-
-// app.get("/",(req,res)=>{
-//   console.log("geti")
-// })
-
-
-// const PORT = 2344
-
-app.listen(port, async () => {
+app.listen(port, async (req, res) => {
   try {
     await connect();
   } catch (err) {
