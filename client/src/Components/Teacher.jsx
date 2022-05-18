@@ -48,7 +48,7 @@ export default function Teacher() {
     const [data , setData] = useState([])
   
     useEffect(()=> {
-      axios.get('https://evaluationteacher1.herokuapp.com/class').then((res)=> setData(res.data));
+      axios.get('https://pranav-teacher-erp-backend.herokuapp.com/class').then((res)=> setData(res.data));
       // console.log("data1",data[0].age)
     },[])
     // console.log("data",data)
@@ -67,7 +67,7 @@ export default function Teacher() {
         }
         console.log(userData)
 
-        axios.post("https://evaluationteacher1.herokuapp.com/teacher",userData).then((res) => {console.log("res",res)})
+        axios.post("https://pranav-teacher-erp-backend.herokuapp.com/teacher",userData).then((res) => {console.log("res",res)})
     }
 
     const addClass = (str) =>{

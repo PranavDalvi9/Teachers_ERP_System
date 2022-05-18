@@ -30,7 +30,7 @@ export default function Home() {
   const[doctor, setDoctor] = useState("")
 
   useEffect(() => {
-    axios.get(`https://evaluationteacher1.herokuapp.com/teacher`,{
+    axios.get(`https://pranav-teacher-erp-backend.herokuapp.com/teacher`,{
       params:{
         page:pagNum,
         size:4,

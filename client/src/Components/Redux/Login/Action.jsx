@@ -1,5 +1,5 @@
 // import { useDispatch } from "react-redux";
-import axios from "axios"
+
 
 
 export const LOGIN_LOADING = "LOGIN_LOADING";
@@ -28,7 +28,7 @@ export const login = ({email, password}) => (dispatch)=> {
     // const dispatch = useDispatch();
 
     dispatch(loginLoading())
-    fetch("https://pranav-teacher-erp-backend.herokuapp.com/login", {
+    fetch("https://apiloginregister.herokuapp.com/login", {
       method: "POST",
       body: JSON.stringify({email,password}),
       headers:{
@@ -43,6 +43,18 @@ export const login = ({email, password}) => (dispatch)=> {
 
 
 export const register = (payload) => (dispatch)=> {
- 
-    axios.post("https://pranav-teacher-erp-backend.herokuapp.com/register", payload).then((res) => console.log("resss", res))
+    // const dispatch = useDispatch();
+
+    dispatch(loginLoading())
+    fetch("https://loginregisterbackend.herokuapp.com/register", {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers:{
+        "Content-Type": "application/json"
+      }
+    })
+    .then((res) => res.json())
+    .then((res) => dispatch(loginSuccess({email:res.email,token:res.token})))
+    .then((res) => {alert("Register Successfull")})
+    .catch((err) => dispatch(loginFailure()))
 }
